@@ -26,5 +26,5 @@ prompt.get({
 	console.log('Label: ' + result.label);
 	console.log('Username: ' + result.username);
 	console.log('Password: ' + result.password);
-	console.log(qr('otpauth://totp/' + result.label + ':' + result.username + '?secret=' + result.password + '&issuer=' + result.label));
+	console.log(qr('otpauth://totp/' + result.label + ':' + result.username + '?secret=' + result.password + '&issuer=' + result.label, 'L'));
 });

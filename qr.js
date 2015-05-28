@@ -1,8 +1,10 @@
 var qr = require('qrcode-npm');
 
 function make(data, ec) {
-	var code;
+	var code,
+		error;
 
+	// Generate smallest possible QR code:
 	for (var s = 0; s <= 10; ++s)
 		try {
 			code = qr.qrcode(s, ec || 'M');
@@ -10,10 +12,9 @@ function make(data, ec) {
 			code.make();
 			break;
 		} catch (e) {
-			// console.log(e);
+			error = e;
 		}
-	if (!code)
-		throw 'Data too large.';
+	if (!code) throw error;
 
 	var size = code.getModuleCount(),
 		sl = '\033[15;107;97m',
