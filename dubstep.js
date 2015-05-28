@@ -1,28 +1,30 @@
 #!/usr/local/bin/node
 
-var qr = require('qrcode-npm'),
-	data = process.argv[2],
-	ec = process.argv[3] || 'M',
-	code;
+var qr = require('./qr'),
+	prompt = require('prompt');
 
-for (var s = 0; s <= 10; ++s)
-	try {
-		code = qr.qrcode(s, ec);
-		code.addData(data);
-		code.make();
-		break;
-	} catch (e) { }
-
-var size = code.getModuleCount(),
-	sl = '\033[15;107;97m';
-for (var i = 0; i < size * 2 + 4; ++i)
-	sl += '\u2588';
-sl += '\033[0m';
-console.log(sl);
-for (var y = 0; y < size; ++y) {
-	var l = '';
-	for (var x = 0; x < size; ++x)
-		l += (code.isDark(x, y) ? '\033[30;40m' : '\033[15;107;97m') + '\u2588\u2588';
-	console.log('\033[15;107;97m\u2588\u2588' + l + '\033[15;107;97m\u2588\u2588\033[0m');
-}
-console.log(sl);
+prompt.start();
+prompt.get({
+	properties: {
+		label: {
+			message: 'Label/issuer',
+			required: true,
+			hidden: false
+		},
+		username: {
+			message: 'Username',
+			required: true,
+			hidden: false
+		},
+		password: {
+			message: 'Password',
+			required: true,
+			hidden: false // true
+		}
+	}
+}, function(err, result) {
+	console.log('Label: ' + result.label);
+	console.log('Username: ' + result.username);
+	console.log('Password: ' + result.password);
+	console.log(qr('otpauth://totp/' + result.label + ':' + result.username + '?secret=' + result.password + '&issuer=' + result.label));
+});
