@@ -10,7 +10,8 @@ To that end, I have written `dubstep`.
 ## Installation
 
     git clone https://github.com/andrew-t/dubstep.git
-    npm install ./dubstep
+    cd dubstep
+    npm install -g .
 
 ## Storing credentials
 
