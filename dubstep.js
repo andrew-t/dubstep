@@ -3,8 +3,9 @@
 var qr = require('./qr'),
 	prompt = require('prompt'),
 	exec = require('child_process').exec,
-	_32 = require('thirty-two'),
-	totp = require('notp').totp;
+	_32 = require('thirty-two').decode,
+	totp = require('notp').totp.gen,
+	copy = require('copy-paste').copy;
 
 switch (process.argv[2]) {
 	case undefined:
@@ -54,8 +55,14 @@ switch (process.argv[2]) {
 				input += chunk;
 		});
 		process.stdin.on('end', function() {
-			var key = /\nPassword:([^\n]*)\r?\n/.exec(input)[1];
-			console.log('Code: ' + totp.gen(_32.decode(key.replace(/\s/g, ''))));
+			var code = totp(_32(/\nPassword:([^\n]*)\r?\n/
+					.exec(input)[1]
+					.replace(/\s/g, '')));
+			console.log('Code: ' + code);
+			if (process.argv[3] == '-c') {
+				copy(code);
+				console.log('Copied to clipboard.');
+			}
 		});
 		break;
 	default:
