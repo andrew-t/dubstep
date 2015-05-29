@@ -1,7 +1,7 @@
 # dubstep
 Adding good 2-step auth support to `pass`
 
-I’ve taken to using [pass](http://www.passwordstore.org) as my main password vault. It uses GPG for encryption and Git for cloud sync. It’s a pain to set up, especially cross-device and on Android, but it can be done and it’s easy thereafter.
+I’ve taken to using [pass](http://www.passwordstore.org) as my main password vault. It uses GPG for encryption and Git for cloud sync. It’s a pain to set up, especially cross-device and on Android (tip: install [this app](https://github.com/zeapo/Android-Password-Store) and [this GPG keychain](http://www.openkeychain.org) using [F-Droid](https://f-droid.org)) but it can be done and it’s easy thereafter.
 
 I also use 2-factor authentication wherever possible, but I like hacking my phone, so obviously having all my logins tied to it is a problem.
 
