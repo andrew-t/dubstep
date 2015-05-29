@@ -9,7 +9,8 @@ To that end, I have written `dubstep`.
 
 ## Installation
 
-    npm install https://github.com/andrew-t/dubstep.git
+    git clone https://github.com/andrew-t/dubstep.git
+    npm install ./dubstep
 
 ## Storing credentials
 
