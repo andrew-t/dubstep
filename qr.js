@@ -1,3 +1,5 @@
+#!/usr/local/bin/node
+
 var qr = require('qrcode-npm');
 
 function make(data, ec) {

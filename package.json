@@ -1,0 +1,22 @@
+{
+  "name": "dubstep",
+  "description": "Adding simple storage of 2-factor authentication keys to pass",
+  "version": "0.0.1",
+  "author": "Andrew Taylor <dubstep@andrewt.net>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrew-t/dubstep.git"
+  },
+  "dependencies": {
+    "prompt": "^0.2.14",
+    "qrcode-npm": "0.0.3"
+  },
+  "main": "./dubstep",
+  "bin": {
+    "qr": "qr.js",
+    "dubstep": "dubstep.js"
+  },
+  "engines": {
+    "node": ">= 0.6.6"
+  }
+}
