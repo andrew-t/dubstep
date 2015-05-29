@@ -3,7 +3,8 @@
 var qr = require('./qr'),
 	prompt = require('prompt'),
 	exec = require('child_process').exec,
-	speakeasy = require('speakeasy');
+	_32 = require('thirty-two'),
+	totp = require('notp').totp;
 
 switch (process.argv[2]) {
 	case undefined:
@@ -54,27 +55,7 @@ switch (process.argv[2]) {
 		});
 		process.stdin.on('end', function() {
 			var key = /\nPassword:([^\n]*)\r?\n/.exec(input)[1];
-			console.log('Hex Code:    ' + speakeasy.time({
-					key: key.replace(/\s/g, ''),
-					encoding: 'hex'
-				}));
-			console.log('BASE32Code:  ' + speakeasy.time({
-					key: key.toUpperCase()
-						.replace(/\s/g, ''),
-					encoding: 'base32'
-				}));
-			console.log('Base32 Code: ' + speakeasy.time({
-					key: key,
-					encoding: 'base32'
-				}));
-			console.log('ASCII Code:  ' + speakeasy.time({
-					key: key.replace(/\s/g, ''),
-					encoding: 'ascii'
-				}));
-			console.log('ASCIICode:   ' + speakeasy.time({
-					key: key,
-					encoding: 'ascii'
-				}));
+			console.log('Code: ' + totp.gen(_32.decode(key.replace(/\s/g, ''))));
 		});
 		break;
 	default:
