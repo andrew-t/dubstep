@@ -27,17 +27,15 @@ You will be prompted for:
 
 Once done, view the QR code using
 
-    pass show 2step/example
+    dubstep qr example
     
-(All `dubstep` credentials are stored in `2step/`.)
-
 Scan the QR code in your terminal window using your Authenticator app. The website will usually ask that you enter a code to prove it worked correctly. If it did, you should run `pass git push` to store your new credentials to the cloud.
 
 ## Generating codes
 
 Now that your computer knows all your 2FA secrets, there’s no real reason you should need to get your phone out if you want a code. So instead, you can use
 
-    pass show 2step/NAME | dubstep code
+    dubstep code example
 
 and you can add a `-c` flag to the end to copy the code to the clipboard.
 

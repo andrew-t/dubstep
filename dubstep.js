@@ -34,7 +34,7 @@ switch (process.argv[2]) {
 				}
 			}
 		}, function(err, result) {
-			if (result.password)
+			if (result)
 				exec('echo "Username:' + result.username + '\n' +
 					'Password:' + result.password + '\n' +
 					qr('otpauth://totp/' + encodeURIComponent(result.label) + ':' +
@@ -66,8 +66,7 @@ switch (process.argv[2]) {
 		});
 		break;
 	default:
-		console.log('dubstep');
-		console.log('pass show 2step/NAME | dubstep code');
+		console.log('Bad argument: ' + process.argv[2]);
 		break;
 }
 
