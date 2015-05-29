@@ -8,9 +8,9 @@
     "url": "https://github.com/andrew-t/dubstep.git"
   },
   "dependencies": {
-    "2fa": "^0.1.2",
     "prompt": "^0.2.14",
-    "qrcode-npm": "0.0.3"
+    "qrcode-npm": "0.0.3",
+    "speakeasy": "^1.0.3"
   },
   "main": "./dubstep",
   "bin": {

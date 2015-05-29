@@ -3,7 +3,7 @@
 var qr = require('./qr'),
 	prompt = require('prompt'),
 	exec = require('child_process').exec,
-	toofer = require('2fa');
+	speakeasy = require('speakeasy');
 
 switch (process.argv[2]) {
 	case undefined:
@@ -53,10 +53,28 @@ switch (process.argv[2]) {
 				input += chunk;
 		});
 		process.stdin.on('end', function() {
-			var key = /\nPassword:([^\n]*)\r?\n/.exec(input)[1],
-				code = toofer.generateCode(key, Math.floor(Date.now() / 30000));
-			console.log('Code: ' + code);
-			console.log(toofer.verifyTOTP(key, code, { drift: 4, step: 30 }));
+			var key = /\nPassword:([^\n]*)\r?\n/.exec(input)[1];
+			console.log('Hex Code:    ' + speakeasy.time({
+					key: key.replace(/\s/g, ''),
+					encoding: 'hex'
+				}));
+			console.log('BASE32Code:  ' + speakeasy.time({
+					key: key.toUpperCase()
+						.replace(/\s/g, ''),
+					encoding: 'base32'
+				}));
+			console.log('Base32 Code: ' + speakeasy.time({
+					key: key,
+					encoding: 'base32'
+				}));
+			console.log('ASCII Code:  ' + speakeasy.time({
+					key: key.replace(/\s/g, ''),
+					encoding: 'ascii'
+				}));
+			console.log('ASCIICode:   ' + speakeasy.time({
+					key: key,
+					encoding: 'ascii'
+				}));
 		});
 		break;
 	default:
