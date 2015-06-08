@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 if [ -z "$1" ]
-	then ./dubstep.js
+	then $(npm config get prefix)/lib/node_modules/dubstep/dubstep.js
 	else case "$1" in
 		code)
-			pass show "2step/$2" | ./dubstep.js code $3
+			pass show "2step/$2" | $(npm config get prefix)/lib/node_modules/dubstep/dubstep.js code $3
 			;;
 		qr)
 			pass show "2step/$2"

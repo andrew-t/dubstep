@@ -1,7 +1,7 @@
 {
   "name": "dubstep",
   "description": "Adding simple storage of 2-factor authentication keys to pass",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Andrew Taylor <dubstep@andrewt.net>",
   "repository": {
     "type": "git",
