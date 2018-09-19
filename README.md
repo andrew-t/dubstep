@@ -13,6 +13,8 @@ To that end, I have written `dubstep`.
     cd dubstep
     npm install -g .
 
+If you use `gopass` add `export PASSCLIENT=gopass` to your bash profile or whatever.
+
 ## Storing credentials
 
 Go to the website for which you want to set up two-factor authentication and have it display the credentials as text rather than a QR code. Then run `dubstep`:
