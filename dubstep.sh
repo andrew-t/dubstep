@@ -4,10 +4,10 @@ if [ -z "$1" ]
 	then $(npm config get prefix)/lib/node_modules/dubstep/dubstep.js
 	else case "$1" in
 		code)
-			pass show "2step/$2" | $(npm config get prefix)/lib/node_modules/dubstep/dubstep.js code $3
+			${PASSCLIENT:-pass} show "2step/$2" | $(npm config get prefix)/lib/node_modules/dubstep/dubstep.js code $3
 			;;
 		qr)
-			pass show "2step/$2"
+			${PASSCLIENT:-pass} show "2step/$2"
 			;;
 		*)
 			echo 'Add credentials: dubstep'
