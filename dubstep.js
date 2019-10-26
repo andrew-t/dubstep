@@ -34,16 +34,17 @@ switch (process.argv[2]) {
 				}
 			}
 		}, function(err, result) {
-			if (result)
+			if (result) {
+				var url = 'otpauth://totp/' + encodeURIComponent(result.label) + ':' +
+					encodeURIComponent(result.username) + '?secret=' +
+					encodeURIComponent(result.password) + '&issuer=' +
+					encodeURIComponent(result.label);
 				exec('echo "Username:' + result.username + '\n' +
 					'Password:' + result.password + '\n' +
-					qr('otpauth://totp/' + encodeURIComponent(result.label) + ':' +
-						encodeURIComponent(result.username) + '?secret=' +
-						encodeURIComponent(result.password) + '&issuer=' +
-						encodeURIComponent(result.label),
-					'L') +
+				     	url + '\n' +
+					qr(url, 'L') +
 					'" | pass insert -m "2step/' + result.stub + '"');
-			else console.log('Aborted');
+			} else console.log('Aborted');
 		});
 		break;
 	case 'code':
